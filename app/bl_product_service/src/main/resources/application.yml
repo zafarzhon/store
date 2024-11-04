@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: bl_product_service
+server:
+  port: 8081
