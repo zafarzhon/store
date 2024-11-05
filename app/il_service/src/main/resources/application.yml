@@ -3,3 +3,8 @@ spring:
     name: il_service
 server:
   port: 8080
+
+app:
+  feign:
+    url: 127.0.0.1:8081
+    path: /api/v1
