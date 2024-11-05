@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshCart - Онлайн-магазин продуктов</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Дополнительные стили -->
+    <style>
+        /* Настройка высоты страницы для фиксации футера внизу */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Основной контент заполняет все пространство между хедером и футером */
+        main {
+            flex: 1;
+        }
+
+        /* Футер всегда внизу */
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        /* Центрирование и отступы для заголовка и иконок */
+        .header-main {
+            background-color: #f8f9fa;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .search-form {
+            max-width: 600px;
+        }
+
+        /* Настройка иконок над текстом */
+        .icon-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon-links a {
+            color: #343a40;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .icon-links a i {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .icon-links a:hover {
+            color: #007bff;
+        }
+
+        /* Отступы для кнопки поиска */
+        .search-form button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <!-- Верхняя панель -->
+    <div class="top-bar bg-light">
+        <div class="container">
+            <div class="row">
+                <!-- Валюта и язык -->
+                <div class="col-md-6 d-flex justify-content-start">
+                    <span class="me-3">USD $</span>
+                    <span>Русский</span>
+                </div>
+                <!-- Ссылки поддержки -->
+                <div class="col-md-6 d-flex justify-content-end">
+                    <a href="#" class="me-3">Поддержка</a>
+                    <a href="#" class="me-3">Доставка</a>
+                    <a href="#">Гарантия</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной заголовок -->
+    <div class="header-main py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Логотип -->
+                <div class="col-md-3 text-center text-md-start">
+                    <h1 class="logo">FreshCart</h1>
+                </div>
+                <!-- Поисковая строка -->
+                <div class="col-md-6">
+                    <form class="search-form d-flex">
+                        <input class="form-control" type="search" placeholder="Поиск товаров" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Поиск</button>
+                    </form>
+                </div>
+                <!-- Иконки -->
+                <div class="col-md-3 d-flex justify-content-center justify-content-md-end icon-links">
+                    <!-- Модальная кнопка Уведомления -->
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#notificationsModal"
+                       class="d-flex flex-column align-items-center">
+                        <i class="fas fa-bell"></i><span>Уведомления</span>
+                    </a>
+                    <!-- Модальная кнопка Регистрация -->
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal"
+                       class="d-flex flex-column align-items-center">
+                        <i class="fas fa-user"></i><span>Регистрация</span>
+                    </a>
+                    <a href="#" class="d-flex flex-column align-items-center"><i
+                            class="fas fa-box"></i><span>Мои заказы</span></a>
+                    <a href="#" class="d-flex flex-column align-items-center"><i class="fas fa-shopping-cart"></i><span>Корзина</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--&lt;!&ndash; Основное содержимое &ndash;&gt;-->
+<!--<main class="my-5">-->
+<!--    <div class="container">-->
+<!--        <h2>Добро пожаловать в FreshCart!</h2>-->
+<!--        <p>Здесь вы можете найти свежие продукты по отличным ценам.</p>-->
+<!--        &lt;!&ndash; Дополнительное содержимое &ndash;&gt;-->
+<!--    </div>-->
+<!--</main>-->
+
+
+<div class="container my-4">
+    <!-- Categories Section -->
+    <h3 class="mt-5">Категории</h3>
+    <div class="row row-cols-2 row-cols-md-4 g-3 my-3">
+        <div class="col text-center">
+            <a href="phones.html" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Смартфоны">
+                    <div class="card-body">
+                        <h5 class="card-title">Смартфоны</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col text-center">
+            <a href="laptops.html" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Ноутбуки">
+                    <div class="card-body">
+                        <h5 class="card-title">Ноутбуки</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col text-center">
+            <a href="/tablets" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Планшеты">
+                    <div class="card-body">
+                        <h5 class="card-title">Планшеты</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col text-center">
+            <a href="/tvs" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Телевизоры">
+                    <div class="card-body">
+                        <h5 class="card-title">Телевизоры</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Add more categories as needed -->
+    </div>
+</div>
+
+<!-- Модальное окно Уведомления -->
+<div class="modal fade" id="notificationsModal" tabindex="-1" aria-labelledby="notificationsModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationsModalLabel">Уведомления</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Здесь будут отображаться все ваши уведомления.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно Регистрация -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Регистрация</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Имя пользователя</label>
+                        <input type="text" class="form-control" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Электронная почта</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-auto">
+    <div class="container">
+        <div class="row">
+            <!-- Информация о компании -->
+            <div class="col-md-4">
+                <h5>О нас</h5>
+                <p>FreshCart - ваш надежный онлайн-магазин свежих продуктов.</p>
+            </div>
+            <!-- Быстрые ссылки -->
+            <div class="col-md-4">
+                <h5>Быстрые ссылки</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                </ul>
+            </div>
+            <!-- Контакты -->
+            <div class="col-md-4">
+                <h5>Контакты</h5>
+                <p>Email: support@freshcart.ru</p>
+                <p>Телефон: +7 (123) 456-78-90</p>
+            </div>
+        </div>
+        <hr class="bg-secondary">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                &copy; 2024 FreshCart. Все права защищены.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Подключение Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
