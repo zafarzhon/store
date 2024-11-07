@@ -19,11 +19,28 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class Laptop extends Product {
-    private String cpuModel;
-    private Integer ramSize;
-    private String ramType;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cpu_id")
+    private Cpu cpu;
+    @Column(length = 30)
+    private String gpu;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "memory_id")
+    private Memory memory;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "display_id")
+    private Display display;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "battery_id")
     private Battery battery;
-    private Integer ssdMemoryCapacity;
+    @Column(name = "operation_system", length = 15)
+    private String operationSystem;
+    @Column(name = "camera_resolution")
+    private Integer cameraResolution;
+    @Column(length = 10)
+    private String bluetooth;
+    @Column(length = 30)
+    private String wifi;
+    @Column(name = "for_playing", nullable = false, columnDefinition = "bool default false")
+    private Boolean forPlaying;
 }
