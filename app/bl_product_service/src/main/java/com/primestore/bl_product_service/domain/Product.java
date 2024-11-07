@@ -1,14 +1,17 @@
 package com.primestore.bl_product_service.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Comment;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * @author zafarzhon
@@ -24,38 +27,64 @@ import java.util.UUID;
 @SuperBuilder
 public abstract class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    @Column(name = "product_code")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(updatable = false)
+    private Integer id;
+    @Max(value = 9_999_999)
+    @Min(value = 1_000_000)
+    @Comment("Generated in insert")
+    @Column(name = "product_code", nullable = false, unique = true)
     private Integer productCode;
+    @Column(nullable = false, length = 10)
     private String type;
+    @Column(nullable = false, length = 10)
     private String brand;
+    @Column(nullable = false, length = 22)
     private String model;
+    @Column(nullable = false)
     private String description;
+    @Min(value = 0)
+    @Max(value = 100)
+    @Column(nullable = false, columnDefinition = "Integer default 0")
     private Integer discount;
-    private Double priceExDiscount; // price without discount
-    private Double priceWithDiscount; // price with discount
-    private Double cost; // real cost
+    @Comment("Price without discount")
+    @Column(name = "price_ex_discount", nullable = false, columnDefinition = "Numeric(7,2) default 1.0")
+    private Double priceExDiscount;
+    @Comment("Price with discount. Generated in update")
+    @Column(name = "price_with_discount", nullable = false, columnDefinition = "Numeric(7,2) default 1.0")
+    private Double priceWithDiscount;
+    @Comment("Real cost")
+    @Column(nullable = false, columnDefinition = "Numeric(7,2) default 1.0")
+    private Double cost;
+    @Column(length = 10)
     private String color;
+    @Min(value = 0)
+    @Column(nullable = false, columnDefinition = "Integer default 0.0")
     private Integer count;
-    private Integer warranty; // months
+    @Column(nullable = false, columnDefinition = "Integer default 0.0")
+    @Comment("unit month")
+    private Integer warranty;
+    @Column(name = "release_year")
     private Integer releaseYear;
-    private Double height; // mm
-    private Double width; // mm
-    private Double thickness; // mm
-    private Double weight; // gram
+    @Comment("Unit millimetres")
+    @Column(columnDefinition = "Numeric(5,2)")
+    private Double height;
+    @Comment("Unit millimetres")
+    @Column(columnDefinition = "Numeric(5,2)")
+    private Double width;
+    @Comment("Unit millimetres")
+    @Column(columnDefinition = "Numeric(5,2)")
+    private Double thickness;
+    @Comment("Unit gram")
+    @Column(columnDefinition = "Numeric(6,2)")
+    private Double weight;
+    @Length(max = 15)
     private String country;
 
-    /*
-        productCode
-        b=brend.hashcode%10
-        t=type.hashcode%10
-        m=model.hashcode%10
-        (b+t*10+m*100)*10000+((RANDOM*10000)+1000)%1000 ->1234567
-     */
     @PrePersist
     private void postLoad() {
         generateProductCode();
+        setPriceWithDiscount(calcPriceWithDiscount());
     }
 
     private void generateProductCode() {
