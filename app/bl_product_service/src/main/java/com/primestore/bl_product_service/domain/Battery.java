@@ -21,11 +21,11 @@ public class Battery {
     private Integer capacity;
     @Column(name = "max_charge_power", columnDefinition = "Numeric(3,1)")
     private Double maxChargePower;
-    @Column(name = "has_wireless_charge", columnDefinition = "bool default 'false'")
+    @Column(name = "has_wireless_charge", nullable = false, columnDefinition = "bool default 'false'")
     private Boolean hasWirelessCharge;
-    @Column(name = "has_reverse_charge", columnDefinition = "bool default 'false'")
+    @Column(name = "has_reverse_charge", nullable = false, columnDefinition = "bool default 'false'")
     private Boolean hasReverseCharge;
-    @Column(name = "has_fast_charge", columnDefinition = "bool default 'false'")
+    @Column(name = "has_fast_charge", nullable = false, columnDefinition = "bool default 'false'")
     private Boolean hasFastCharge;
 
 }
