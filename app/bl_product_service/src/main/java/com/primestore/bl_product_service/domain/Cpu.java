@@ -1,12 +1,7 @@
 package com.primestore.bl_product_service.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
 
 /**
  * @author zafarzhon
@@ -23,7 +18,8 @@ import java.util.UUID;
 public class Cpu {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Integer id;
+    @Column(length = 30)
     private String model;
     private Integer cores;
 }

@@ -1,12 +1,7 @@
 package com.primestore.bl_product_service.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
 
 /**
  * @author zafarzhon
@@ -22,12 +17,15 @@ import java.util.UUID;
 public class Battery {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Integer id;
     private Integer capacity;
+    @Column(name = "max_charge_power", columnDefinition = "Numeric(3,1)")
     private Double maxChargePower;
-    private String type;
+    @Column(name = "has_wireless_charge", columnDefinition = "bool default 'false'")
     private Boolean hasWirelessCharge;
+    @Column(name = "has_reverse_charge", columnDefinition = "bool default 'false'")
     private Boolean hasReverseCharge;
+    @Column(name = "has_fast_charge", columnDefinition = "bool default 'false'")
     private Boolean hasFastCharge;
 
 }

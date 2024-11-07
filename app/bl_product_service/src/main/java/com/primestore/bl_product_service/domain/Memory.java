@@ -1,12 +1,7 @@
 package com.primestore.bl_product_service.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
 
 /**
  * @author zafarzhon
@@ -22,9 +17,11 @@ import java.util.UUID;
 public class Memory {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Integer id;
     private Integer ram;
+    @Column(name = "ram_type", length = 10)
     private String ramType;
     private Integer rom;
+    @Column(name = "rom_type", length = 10)
     private String romType;
 }

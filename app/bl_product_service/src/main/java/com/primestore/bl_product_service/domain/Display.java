@@ -1,12 +1,7 @@
 package com.primestore.bl_product_service.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
 
 /**
  * @author zafarzhon
@@ -23,11 +18,13 @@ import java.util.UUID;
 public class Display {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Integer id;
+    @Column(columnDefinition = "Numeric(2,2)")
     private Double diagonal;
     private Integer refreshRate;
+    @Column(length = 10)
     private String type;
+    @Column(length = 30)
     private String resolution;
-    private String resolutionFormat;
 
 }
