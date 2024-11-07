@@ -12,22 +12,18 @@ import java.util.UUID;
  * @author zafarzhon
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
+
 @Entity
-@Table(name = "batteries")
+@Table(name = "cpus")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Battery {
+public class Cpu {
     @Id
     @GeneratedValue
     private UUID id;
-    private Integer capacity;
-    private Double maxChargePower;
-    private String type;
-    private Boolean hasWirelessCharge;
-    private Boolean hasReverseCharge;
-    private Boolean hasFastCharge;
-
+    private String model;
+    private Integer cores;
 }

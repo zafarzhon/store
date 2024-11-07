@@ -13,21 +13,18 @@ import java.util.UUID;
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
 @Entity
-@Table(name = "batteries")
+@Table(name = "memories")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Battery {
+public class Memory {
     @Id
     @GeneratedValue
     private UUID id;
-    private Integer capacity;
-    private Double maxChargePower;
-    private String type;
-    private Boolean hasWirelessCharge;
-    private Boolean hasReverseCharge;
-    private Boolean hasFastCharge;
-
+    private Integer ram;
+    private String ramType;
+    private Integer rom;
+    private String romType;
 }
