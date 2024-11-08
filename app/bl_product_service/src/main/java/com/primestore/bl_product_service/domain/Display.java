@@ -19,7 +19,7 @@ public class Display {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(columnDefinition = "Numeric(2,2)")
+    @Column(columnDefinition = "Numeric(3,1)")
     private Double diagonal;
     private Integer refreshRate;
     @Column(length = 10)

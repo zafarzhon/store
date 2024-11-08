@@ -41,22 +41,22 @@ public abstract class Product {
     private String brand;
     @Column(nullable = false, length = 22)
     private String model;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "bpchar")
     private String description;
     @Min(value = 0)
     @Max(value = 100)
     @Column(nullable = false, columnDefinition = "Integer default 0")
     private Integer discount;
     @Comment("Price without discount")
-    @Column(name = "price_ex_discount", nullable = false, columnDefinition = "Numeric(7,2) default 1.0")
-    private Double priceExDiscount;
+    @Column(name = "price_ex_discount", nullable = false, columnDefinition = "Integer default 1.0")
+    private Integer priceExDiscount;
     @Comment("Price with discount. Generated in update")
-    @Column(name = "price_with_discount", nullable = false, columnDefinition = "Numeric(7,2) default 1.0")
-    private Double priceWithDiscount;
+    @Column(name = "price_with_discount", nullable = false, columnDefinition = "Integer default 1.0")
+    private Integer priceWithDiscount;
     @Comment("Real cost")
-    @Column(nullable = false, columnDefinition = "Numeric(7,2) default 1.0")
+    @Column(nullable = false, columnDefinition = "Numeric(9,2) default 1.0")
     private Double cost;
-    @Column(length = 10)
+    @Column(length = 20)
     private String color;
     @Min(value = 0)
     @Column(nullable = false, columnDefinition = "Integer default 0.0")
@@ -67,24 +67,26 @@ public abstract class Product {
     @Column(name = "release_year")
     private Integer releaseYear;
     @Comment("Unit millimetres")
-    @Column(columnDefinition = "Numeric(5,2)")
+    @Column(columnDefinition = "Numeric(7,2)")
     private Double height;
     @Comment("Unit millimetres")
-    @Column(columnDefinition = "Numeric(5,2)")
+    @Column(columnDefinition = "Numeric(7,2)")
     private Double width;
     @Comment("Unit millimetres")
-    @Column(columnDefinition = "Numeric(5,2)")
+    @Column(columnDefinition = "Numeric(7,2)")
     private Double thickness;
     @Comment("Unit gram")
-    @Column(columnDefinition = "Numeric(6,2)")
+    @Column(columnDefinition = "Numeric(8,2)")
     private Double weight;
     @Length(max = 15)
     private String country;
 
     @PrePersist
-    private void postLoad() {
+    private void prePersist() {
+        System.out.println(priceWithDiscount);
         generateProductCode();
         setPriceWithDiscount(calcPriceWithDiscount());
+        System.out.println(priceWithDiscount);
     }
 
     private void generateProductCode() {
@@ -103,8 +105,8 @@ public abstract class Product {
         setPriceWithDiscount(calcPriceWithDiscount());
     }
 
-    private Double calcPriceWithDiscount() {
-        Double newPrice = this.priceExDiscount * (1 - this.discount / 100);
-        return this.priceExDiscount - newPrice < 1.0 ? 1.0 : newPrice;
+    private Integer calcPriceWithDiscount() {
+        Integer newPrice = (int) Math.ceil(this.priceExDiscount * (1. - this.discount / 100.));
+        return this.priceExDiscount - newPrice < 1 ? 1 : newPrice;
     }
 }

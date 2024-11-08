@@ -41,6 +41,6 @@ public class Laptop extends Product {
     private String bluetooth;
     @Column(length = 30)
     private String wifi;
-    @Column(name = "for_playing", nullable = false, columnDefinition = "bool default false")
+    @Column(name = "for_playing")
     private Boolean forPlaying;
 }
