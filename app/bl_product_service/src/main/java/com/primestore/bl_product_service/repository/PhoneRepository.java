@@ -1,6 +1,6 @@
 package com.primestore.bl_product_service.repository;
 
-import com.primestore.bl_product_service.domain.Product;
+import com.primestore.bl_product_service.domain.Phone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,6 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
 
-public interface ProductRepository extends JpaRepository<Product, Integer> {
-
+public interface PhoneRepository extends JpaRepository<Phone, Integer> {
 }
