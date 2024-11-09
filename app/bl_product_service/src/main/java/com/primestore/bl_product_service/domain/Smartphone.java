@@ -12,13 +12,13 @@ import lombok.experimental.SuperBuilder;
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
 @Entity
-@Table(name = "phones")
+@Table(name = "smartphones")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class Phone extends Product {
+public class Smartphone extends Product {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cpu_id")
     private Cpu cpu;
