@@ -9,6 +9,10 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 server:
   port: 8081
+
+app:
+  api:
+    path: /api/v1
