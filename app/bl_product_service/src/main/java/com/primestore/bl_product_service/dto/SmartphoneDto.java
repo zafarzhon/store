@@ -20,7 +20,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class PhoneDto extends ProductDto {
+public class SmartphoneDto extends ProductDto {
     private Cpu cpu;
     private Memory memory;
     private Display display;
