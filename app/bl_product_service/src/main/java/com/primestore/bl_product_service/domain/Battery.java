@@ -27,5 +27,4 @@ public class Battery {
     private Boolean hasReverseCharge;
     @Column(name = "has_fast_charge")
     private Boolean hasFastCharge;
-
 }

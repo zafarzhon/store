@@ -17,13 +17,14 @@ import java.util.Random;
  * @author zafarzhon
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
-@Entity
-@Table(name = "products")
+//@Entity
+//@Table(name = "products")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 @SuperBuilder
 public abstract class Product {
     @Id
@@ -41,7 +42,7 @@ public abstract class Product {
     private String brand;
     @Column(nullable = false, length = 22)
     private String model;
-    @Column(nullable = false, columnDefinition = "bpchar")
+    @Column(nullable = false) // to do -> bpchar
     private String description;
     @Min(value = 0)
     @Max(value = 100)
@@ -83,10 +84,8 @@ public abstract class Product {
 
     @PrePersist
     private void prePersist() {
-        System.out.println(priceWithDiscount);
         generateProductCode();
         setPriceWithDiscount(calcPriceWithDiscount());
-        System.out.println(priceWithDiscount);
     }
 
     private void generateProductCode() {
