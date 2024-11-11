@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @RequiredArgsConstructor
 public class BlProductServiceApplication {
+    //    private final LaptopRepo repo;
+    private final UpdateService updateService;
     public static void main(String[] args) {
         SpringApplication.run(BlProductServiceApplication.class, args);
     }
@@ -54,6 +56,43 @@ public class BlProductServiceApplication {
 //                .bluetooth("5.2")
 //                .wifi("4 (802.11n), 5 (802.11ac)")
 //                .build();
+
+
+//        Cpu cpu = new Cpu().builder().model("AMD Ryzen 5 7535HS").cores(6).build();
+//        Memory memory = new Memory().builder().ramType("DDR5").ram(16).rom(512).romType("SSD").build();
+//        Display display =
+//                new Display().builder().type("IPS").diagonal(15.6).resolution("1920x1080").refreshRate(144).build();
+//        Battery battery =
+//                new Battery().builder().capacity(48).maxChargePower(150.).hasFastCharge(true).build();
+//        Laptop build = new Laptop().builder()
+//                .type("Ноутбук")
+//                .brand("ASUS")
+//                .model("TUF Gaming A15 FA506NF-HN018")
+//                .description("Ноутбук ASUS TUF Gaming A15 FA506NF-HN018 черного цвета оснащен процессором AMD Ryzen 5 7535HS с 6 ядрами частотой до 3.3 ГГц и подходит для работы в графических редакторах и для игр.")
+//                .discount(0)
+//                .priceExDiscount(73999)
+//                .cost(60000.)
+//                .count(12)
+//                .color("Graphite Black")
+//                .warranty(12)
+//                .releaseYear(2023)
+//                .height(359.)
+//                .width(256.)
+//                .thickness(24.5)
+//                .weight(2300.)
+//                .country("Китай")
+//                .cpu(cpu)
+//                .memory(memory)
+//                .display(display)
+//                .battery(battery)
+//                .operationSystem("без ОС")
+//                .bluetooth("5.2")
+//                .wifi("4 (802.11n), 5 (802.11ac)")
+//                .forPlaying(true)
+//                .build();
+//        repo.save(build);
+
+//        updateService.getAndSave();
     }
 
 }

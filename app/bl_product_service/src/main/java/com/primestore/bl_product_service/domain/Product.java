@@ -40,7 +40,7 @@ public abstract class Product {
     private String type;
     @Column(nullable = false, length = 10)
     private String brand;
-    @Column(nullable = false, length = 22)
+    @Column(nullable = false, length = 40)
     private String model;
     @Column(nullable = false) // to do -> bpchar
     private String description;

@@ -19,6 +19,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class Smartphone extends Product {
+    @Transient
+    private String fullName;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cpu_id")
     private Cpu cpu;
@@ -51,4 +53,10 @@ public class Smartphone extends Product {
     private String bluetooth;
     @Column(length = 30)
     private String wifi;
+
+    @PostLoad
+    public void postLoad() {
+        this.fullName = String.format("%s %s %s %d/%d %s", getType(), getBrand(), getModel(), getMemory().getRam(),
+                getMemory().getRom(), getColor());
+    }
 }

@@ -14,4 +14,6 @@ import java.util.List;
 public interface SmartphoneMapper {
     List<SmartphoneDto> toDto(List<Smartphone> smartphones);
 
+    SmartphoneDto toDto(Smartphone smartphone);
+
 }

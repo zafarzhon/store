@@ -1,7 +1,7 @@
 package com.primestore.bl_product_service.controller;
 
-import com.primestore.bl_product_service.dto.SmartphoneDto;
-import com.primestore.bl_product_service.service.SmartphoneService;
+import com.primestore.bl_product_service.dto.LaptopDto;
+import com.primestore.bl_product_service.service.LaptopService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,15 +14,14 @@ import java.util.List;
  * @author zafarzhon
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
-
 @RestController
-@RequestMapping("/smartphone")
+@RequestMapping("/laptop")
 @RequiredArgsConstructor
-public class SmartphoneController {
-    private final SmartphoneService service;
+public class LaptopController {
+    private final LaptopService service;
 
     @GetMapping("/list")
-    public List<SmartphoneDto> getAll() {
+    public List<LaptopDto> getAll() {
         return service.getAll();
     }
 
@@ -37,7 +36,8 @@ public class SmartphoneController {
     }
 
     @GetMapping("/{id}")
-    public SmartphoneDto getById(@PathVariable int id) {
+    public LaptopDto getById(@PathVariable int id) {
         return service.getById(id);
     }
+
 }

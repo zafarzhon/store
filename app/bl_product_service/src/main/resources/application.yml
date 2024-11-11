@@ -12,7 +12,3 @@ spring:
       ddl-auto: update
 server:
   port: 8081
-
-app:
-  api:
-    path: /api/v1

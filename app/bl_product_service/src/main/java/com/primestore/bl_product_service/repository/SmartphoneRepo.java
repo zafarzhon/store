@@ -11,8 +11,7 @@ import java.util.List;
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
 
-public interface SmartphoneRepository extends JpaRepository<Smartphone, Integer> {
-    //    boolean updateSmartphone(Smartphone smartphone);
+public interface SmartphoneRepo extends JpaRepository<Smartphone, Integer> {
     @EntityGraph(attributePaths = {"battery", "cpu", "display", "memory"})
     List<Smartphone> findAll();
 
