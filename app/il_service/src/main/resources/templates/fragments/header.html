@@ -1,0 +1,72 @@
+<block th:fragment="header">
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">Primestore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">О нас</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">Каталог</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">Смартфоны</a></li>
+                            <li><a class="dropdown-item" href="#!">Ноутбуки</a></li>
+                            <li><a class="dropdown-item" href="#!">Аксессуары</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Кнопка поиска -->
+                <form class="d-flex me-3">
+                    <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                    <button class="btn btn-outline-dark" type="submit">Найти</button>
+                </form>
+                <!-- Кнопка войти с модальным окном -->
+                <button class="btn btn-outline-dark me-3" type="button" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                    <i class="bi-person-fill"></i> Войти
+                </button>
+                <!-- Кнопка мои заказы -->
+                <a href="#!" class="btn btn-outline-dark me-3">
+                    <i class="bi-bag-fill"></i> Мои заказы
+                </a>
+                <!-- Корзина -->
+                <button class="btn btn-outline-dark" type="button">
+                    <i class="bi-cart-fill me-1"></i>
+                    Корзина
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Модальное окно для входа -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Электронная почта</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

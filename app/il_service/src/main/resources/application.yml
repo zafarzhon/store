@@ -1,10 +1,13 @@
 spring:
   application:
     name: il_service
+  mvc:
+    static-path-pattern: /static/**
 server:
   port: 8080
-
 app:
   feign:
     url: 127.0.0.1:8081
-    path: /api/v1
+    path:
+      smartphones: /smartphone
+      laptops: /laptop

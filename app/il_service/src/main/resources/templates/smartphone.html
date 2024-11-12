@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head}"></div>
+<body>
+<div th:replace="~{fragments/header}"></div>
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Фото товара -->
+        <div class="col-md-4">
+            <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">
+        </div>
+
+        <!-- Основная информация о товаре -->
+        <div class="col-md-8">
+            <h6 class="mt-auto" th:text="${smartphone.fullName}"></h6>
+
+            <!-- Значок скидки, отображается в верхнем правом углу, если есть скидка -->
+            <span th:if="${smartphone.discount > 0}"
+                  class="badge bg-danger position-absolute top-0 end-0 rounded-pill"
+                  th:text="${'-' + smartphone.discount + '%'}">
+                            </span>
+
+            <!-- Блок с ценами для выравнивания -->
+            <div class="mt-auto">
+                <!-- Если есть скидка, показывается PriceWithDiscount, а PriceExDiscount зачёркнут -->
+                <span th:if="${smartphone.discount > 0}" class="product-price fw-bold text-primary mb-0"
+                      th:text="${smartphone.priceWithDiscount + ' ₽'}">
+
+                                </span>
+                <span th:if="${smartphone.discount > 0}"
+                      class="text-muted text-decoration-line-through mb-0"
+                      th:text="${smartphone.priceExDiscount + ' ₽'}">
+                                </span>
+
+                <!-- Если скидки нет, показывается только PriceExDiscount без зачёркивания -->
+                <p th:if="${smartphone.discount == 0}" class="fw-bold text-primary mb-0"
+                   th:text="${smartphone.priceExDiscount + ' ₽'}">
+                </p>
+            </div>
+
+            <!-- Кнопка "В корзину", всегда располагается внизу -->
+            <div class="mt-auto">
+                <button class="btn btn-primary btn-sm w-100 mt-3">В корзину</button>
+            </div>
+            <!-- Описание товара -->
+            <div class="mt-4">
+                <h5>Описание</h5>
+                <p th:text="${smartphone.description}"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Характеристики товара -->
+    <div class="mt-5">
+        <h5>Характеристики</h5>
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td>Тип</td>
+                <td th:text="${smartphone.type}"></td>
+            </tr>
+            <tr>
+                <td>Производитель</td>
+                <td th:text="${smartphone.brand}"></td>
+            </tr>
+            <tr>
+                <td>Модель</td>
+                <td th:text="${smartphone.model}"></td>
+            </tr>
+            <tr>
+                <td>Цвет</td>
+                <td th:text="${smartphone.color}"></td>
+            </tr>
+            <tr>
+                <td>Модель процессора</td>
+                <td th:text="${smartphone.cpu.model}"></td>
+            </tr>
+            <tr>
+                <td>Количество ядер</td>
+                <td th:text="${smartphone.cpu.cores}"></td>
+            </tr>
+            <tr>
+                <td>Объем оперативной памяти</td>
+                <td th:text="${smartphone.memory.ram}"></td>
+            </tr>
+            <tr>
+                <td>Тип оперативной памяти</td>
+                <td th:text="${smartphone.memory.ramType}"></td>
+            </tr>
+            <tr>
+                <td>Объем встроенной памяти</td>
+                <td th:text="${smartphone.memory.rom}"></td>
+            </tr>
+            <tr>
+                <td>Тип встроенной памяти</td>
+                <td th:text="${smartphone.memory.romType}"></td>
+            </tr>
+            <tr>
+                <td>Диагональ экрана (дюйм)</td>
+                <td th:text="${smartphone.display.diagonal}"></td>
+            </tr>
+            <tr>
+                <td>Частота обновления экрана</td>
+                <td th:text="${smartphone.display.refreshRate}"></td>
+            </tr>
+            <tr>
+                <td>Технология изготовления матрицы</td>
+                <td th:text="${smartphone.display.type}"></td>
+            </tr>
+            <tr>
+                <td>Разрешение экрана</td>
+                <td th:text="${smartphone.display.resolution}"></td>
+            </tr>
+            <tr>
+                <td>Емкость аккумулятора</td>
+                <td th:text="${smartphone.battery.capacity}"></td>
+            </tr>
+            <tr>
+                <td>Выходная мощность ЗУ</td>
+                <td th:text="${smartphone.battery.maxChargePower}"></td>
+            </tr>
+            <tr>
+                <td>Быстрая зарядка</td>
+                <td th:text="${smartphone.battery.hasFastCharge}"></td>
+            </tr>
+            <tr>
+                <td>Поддержка беспроводной реверсивной зарядки</td>
+                <td th:text="${smartphone.battery.hasReverseCharge}"></td>
+            </tr>
+            <tr>
+                <td>Поддержка беспроводной зарядки</td>
+                <td th:text="${smartphone.battery.hasWirelessCharge}"></td>
+            </tr>
+            <tr>
+                <td>Операционная система</td>
+                <td th:text="${smartphone.operationSystem}"></td>
+            </tr>
+            <tr>
+                <td>Слот для карты памяти</td>
+                <td th:text="${smartphone.hasExMemoryCardSlot}"></td>
+            </tr>
+            <tr>
+                <td>Количество физических SIM-карт</td>
+                <td th:text="${smartphone.countSimCards}"></td>
+            </tr>
+            <tr>
+                <td>Количество основных (тыловых) камер</td>
+                <td th:text="${smartphone.countMainCamera}"></td>
+            </tr>
+            <tr>
+                <td>eSIM</td>
+                <td th:text="${smartphone.esimSupport}"></td>
+            </tr>
+            <tr>
+                <td>Количество мегапикселей основной камеры</td>
+                <td th:text="${smartphone.mainCameraResolution}"></td>
+            </tr>
+            <tr>
+                <td>NFC</td>
+                <td th:text="${smartphone.hasNFC}"></td>
+            </tr>
+            <tr>
+                <td>Версия Bluetooth</td>
+                <td th:text="${smartphone.bluetooth}"></td>
+            </tr>
+            <tr>
+                <td>Стандарт Wi-Fi</td>
+                <td th:text="${smartphone.wifi}"></td>
+            </tr>
+            <tr>
+                <td>Гарантия продавца</td>
+                <td th:text="${smartphone.warranty}"></td>
+            </tr>
+            <tr>
+                <td>Год релиза</td>
+                <td th:text="${smartphone.releaseYear}"></td>
+            </tr>
+            <tr>
+                <td>Ширина</td>
+                <td th:text="${smartphone.width}"></td>
+            </tr>
+            <tr>
+                <td>Высота</td>
+                <td th:text="${smartphone.height}"></td>
+            </tr>
+            <tr>
+                <td>Толщина</td>
+                <td th:text="${smartphone.thickness}"></td>
+            </tr>
+            <tr>
+                <td>Вес</td>
+                <td th:text="${smartphone.weight}"></td>
+            </tr>
+            <tr>
+                <td>Страна-производитель</td>
+                <td th:text="${smartphone.country}"></td>
+            </tr>
+            <tr>
+                <td>Мобильная связь</td>
+                <td th:text="${smartphone.communicationStandard}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!--<div class="container mt-4">-->
+<!--    <div class="row">-->
+<!--        &lt;!&ndash; Фото товара &ndash;&gt;-->
+<!--        <div class="col-md-4">-->
+<!--            <img src="https://via.placeholder.com/150" alt="Product Image" class="img-fluid">-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Основная информация о товаре &ndash;&gt;-->
+<!--        <div class="col-md-8">-->
+<!--            <h3 class="mb-3">Название товара</h3>-->
+
+<!--            &lt;!&ndash; Цена &ndash;&gt;-->
+<!--            <div>-->
+<!--                &lt;!&ndash; Блок для товаров со скидкой &ndash;&gt;-->
+<!--                <span class="text-decoration-line-through text-muted me-2">6,999 ₽</span>-->
+<!--                <span class="fs-5 fw-bold text-danger">5,999 ₽</span>-->
+
+<!--                &lt;!&ndash; Блок для товаров без скидки (раскомментируйте при необходимости) &ndash;&gt;-->
+<!--                &lt;!&ndash; <span class="fs-5 fw-bold">6,999 ₽</span> &ndash;&gt;-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Кнопка "В корзину" &ndash;&gt;-->
+<!--            <button class="btn btn-primary btn-lg w-100 mt-3">Добавить в корзину</button>-->
+
+<!--            &lt;!&ndash; Описание товара &ndash;&gt;-->
+<!--            <div class="mt-4">-->
+<!--                <h5>Описание</h5>-->
+<!--                <p>Здесь будет описание товара. Подробное описание характеристик и особенностей продукта.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Характеристики товара &ndash;&gt;-->
+<!--    <div class="mt-5">-->
+<!--        <h5>Характеристики</h5>-->
+<!--        <table class="table table-bordered">-->
+<!--            <tbody>-->
+<!--            <tr>-->
+<!--                <td>Производитель</td>-->
+<!--                <td>Компания X</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Модель</td>-->
+<!--                <td>Модель Y</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Цвет</td>-->
+<!--                <td>Черный</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Емкость аккумулятора</td>-->
+<!--                <td>4000 мАч</td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div th:replace="~{fragments/footer}"></div>
+</body>
+</html>
