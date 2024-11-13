@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: bl_order_service
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    username: user
+    password: user
+    url: jdbc:postgresql://localhost:5432/order_db
+    driver-class-name: org.postgresql.Driver
+server:
+  port: 8082
