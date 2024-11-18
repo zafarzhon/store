@@ -1,68 +1,68 @@
-<!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="~{fragments/head}"></div>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru" xmlns:th="http://www.thymeleaf.org">-->
+<!--<div th:replace="~{fragments/head}"></div>-->
+<!--<body>-->
 
-<!-- Header -->
-<div th:replace="~{fragments/header}"></div>
-
-
-<div class="container my-5">
-    <div class="row">
-        <!-- Sidebar for filters -->
-        <div th:replace="~{fragments/filter}"></div>
-
-        <!-- Product Listings -->
-        <div class="col-md-9">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-
-                <div class="col" th:each="smartphone : ${smartphones}">
-                    <a th:href="@{/smartphones/{id}(id=${smartphone.id})}"
-                       class="text-decoration-none text-dark h-100 d-flex flex-column">
-                        <div class="product-card border p-3 d-flex flex-column h-100 position-relative">
-                            <img src="https://via.placeholder.com/150" alt="Smartphone Image"
-                                 class="product-image w-100">
-
-                            <h6 class="mt-auto" th:text="${smartphone.fullName}"></h6>
-
-                            <!-- Значок скидки, отображается в верхнем правом углу, если есть скидка -->
-                            <span th:if="${smartphone.discount > 0}"
-                                  class="badge bg-danger position-absolute top-0 end-0 rounded-pill"
-                                  th:text="${'-' + smartphone.discount + '%'}">
-                            </span>
-
-                            <!-- Блок с ценами для выравнивания -->
-                            <div class="mt-auto">
-                                <!-- Если есть скидка, показывается PriceWithDiscount, а PriceExDiscount зачёркнут -->
-                                <span th:if="${smartphone.discount > 0}" class="product-price fw-bold text-primary mb-0"
-                                      th:text="${smartphone.priceWithDiscount + ' ₽'}">
-
-                                </span>
-                                <span th:if="${smartphone.discount > 0}"
-                                      class="text-muted text-decoration-line-through mb-0"
-                                      th:text="${smartphone.priceExDiscount + ' ₽'}">
-                                </span>
-
-                                <!-- Если скидки нет, показывается только PriceExDiscount без зачёркивания -->
-                                <p th:if="${smartphone.discount == 0}" class="fw-bold text-primary mb-0"
-                                   th:text="${smartphone.priceExDiscount + ' ₽'}">
-                                </p>
-                            </div>
-
-                            <!-- Кнопка "В корзину", всегда располагается внизу -->
-                            <div class="mt-auto">
-                                <button class="btn btn-primary btn-sm w-100 mt-3">В корзину</button>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
+<!--&lt;!&ndash; Header &ndash;&gt;-->
+<!--<div th:replace="~{fragments/header}"></div>-->
 
 
-<div th:replace="~{fragments/footer}"></div>
-</body>
-</html>
+<!--<div class="container my-5">-->
+<!--    <div class="row">-->
+<!--        &lt;!&ndash; Sidebar for filters &ndash;&gt;-->
+<!--        <div th:replace="~{fragments/filter}"></div>-->
+
+<!--        &lt;!&ndash; Product Listings &ndash;&gt;-->
+<!--        <div class="col-md-9">-->
+<!--            <div class="row row-cols-1 row-cols-md-3 g-4">-->
+
+<!--                <div class="col" th:each="smartphone : ${smartphones}">-->
+<!--                    <a th:href="@{/smartphones/{id}(id=${smartphone.id})}"-->
+<!--                       class="text-decoration-none text-dark h-100 d-flex flex-column">-->
+<!--                        <div class="product-card border p-3 d-flex flex-column h-100 position-relative">-->
+<!--                            <img src="https://via.placeholder.com/150" alt="Smartphone Image"-->
+<!--                                 class="product-image w-100">-->
+
+<!--                            <h6 class="mt-auto" th:text="${smartphone.fullName}"></h6>-->
+
+<!--                            &lt;!&ndash; Значок скидки, отображается в верхнем правом углу, если есть скидка &ndash;&gt;-->
+<!--                            <span th:if="${smartphone.discount > 0}"-->
+<!--                                  class="badge bg-danger position-absolute top-0 end-0 rounded-pill"-->
+<!--                                  th:text="${'-' + smartphone.discount + '%'}">-->
+<!--                            </span>-->
+
+<!--                            &lt;!&ndash; Блок с ценами для выравнивания &ndash;&gt;-->
+<!--                            <div class="mt-auto">-->
+<!--                                &lt;!&ndash; Если есть скидка, показывается PriceWithDiscount, а PriceExDiscount зачёркнут &ndash;&gt;-->
+<!--                                <span th:if="${smartphone.discount > 0}" class="product-price fw-bold text-primary mb-0"-->
+<!--                                      th:text="${smartphone.priceWithDiscount + ' ₽'}">-->
+
+<!--                                </span>-->
+<!--                                <span th:if="${smartphone.discount > 0}"-->
+<!--                                      class="text-muted text-decoration-line-through mb-0"-->
+<!--                                      th:text="${smartphone.priceExDiscount + ' ₽'}">-->
+<!--                                </span>-->
+
+<!--                                &lt;!&ndash; Если скидки нет, показывается только PriceExDiscount без зачёркивания &ndash;&gt;-->
+<!--                                <p th:if="${smartphone.discount == 0}" class="fw-bold text-primary mb-0"-->
+<!--                                   th:text="${smartphone.priceExDiscount + ' ₽'}">-->
+<!--                                </p>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Кнопка "В корзину", всегда располагается внизу &ndash;&gt;-->
+<!--&lt;!&ndash;                            <form class="mt-auto" method="post" th:action="@{/cart/${smartphone.id}}">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <button class="btn btn-primary btn-sm w-100 mt-3">В корзину</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </form>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div th:replace="~{fragments/footer}"></div>-->
+<!--</body>-->
+<!--</html>-->

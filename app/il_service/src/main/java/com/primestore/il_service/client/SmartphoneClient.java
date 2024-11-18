@@ -13,7 +13,7 @@ import java.util.List;
  * @link <a href="https://github.com/zafarzhon">github</a>
  */
 @Component
-@FeignClient(name = "smartphoneClient", url = "${app.feign.url}", path = "${app.feign.path.smartphones}")
+@FeignClient(name = "smartphoneClient", url = "${app.feign.product.url}", path = "${app.feign.path.smartphones}")
 public interface SmartphoneClient {
     @GetMapping("/list")
     List<SmartphoneDto> getAll();

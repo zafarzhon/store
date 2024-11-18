@@ -18,4 +18,19 @@ public class MainController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/protect")
+    public String protect() {
+        return "protect";
+    }
+
+    @GetMapping("/success")
+    public String success() {
+        return "success";
+    }
+
+    @GetMapping("/error")
+    public String error() {
+        return "error";
+    }
 }

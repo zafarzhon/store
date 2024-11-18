@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div th:replace="~{fragments/head}"></div>
 <body>
-<div th:replace="~{fragments/header}"></div>
+<div th:replace="~{fragments/newheader.html}"></div>
 
 <!-- Основной контент -->
 <main>
+    <h1 sec:authorize=""></h1>
     <!-- Заголовок -->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">

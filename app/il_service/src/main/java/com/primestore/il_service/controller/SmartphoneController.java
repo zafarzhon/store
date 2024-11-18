@@ -25,7 +25,7 @@ public class SmartphoneController {
     public String smartphones(Model model) {
         List<SmartphoneDto> all = smartphoneClient.getAll();
         model.addAttribute("smartphones", all);
-        return "smartphones";
+        return "newsmartphones";
     }
 
     @GetMapping("/{id}")

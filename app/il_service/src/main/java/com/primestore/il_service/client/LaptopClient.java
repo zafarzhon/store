@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @Component
-@FeignClient(name = "laptopClient", url = "${app.feign.url}", path = "${app.feign.path.laptops}")
+@FeignClient(name = "laptopClient", url = "${app.feign.product.url}", path = "${app.feign.path.laptops}")
 public interface LaptopClient {
     @GetMapping("/list")
     List<LaptopDto> getAll();

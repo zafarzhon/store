@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Protect</title>
+</head>
+<body>
+
+<h1 sec:authorize="isAuthenticated()">
+    hello dasffjfdasfj
+    dasfasdf
+</h1>
+This page protected
+</body>
+</html>
