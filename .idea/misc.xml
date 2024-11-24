@@ -6,6 +6,7 @@
     <file type="web" url="file://$PROJECT_DIR$/app/bl_order_service" />
     <file type="web" url="file://$PROJECT_DIR$/app/bl_product_service" />
     <file type="web" url="file://$PROJECT_DIR$/app/il_service" />
+    <file type="web" url="file://$PROJECT_DIR$/app/test" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="azul-21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
