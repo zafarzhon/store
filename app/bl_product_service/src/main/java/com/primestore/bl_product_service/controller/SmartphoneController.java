@@ -40,4 +40,5 @@ public class SmartphoneController {
     public SmartphoneDto getById(@PathVariable int id) {
         return service.getById(id);
     }
+
 }

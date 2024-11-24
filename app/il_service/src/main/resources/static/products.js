@@ -195,7 +195,8 @@ function renderCart() {
             const productHtml = `
             <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
                 <div>
-                    <h6>Товар #${productId}</h6>
+                    <a class="fs-6" href="/smartphones/${productId}">
+                    <div><img src="https://via.placeholder.com/150" alt=""></div></a>
                     <p>Количество: <span>${quantity}</span></p>
                 </div>
                 <div>

@@ -1,7 +1,7 @@
 package com.primestore.il_service.service;
 
 import com.primestore.il_service.client.CustomerClient;
-import com.primestore.il_service.dto.CustomerDto;
+import com.primestore.il_service.dto.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,12 +18,12 @@ public class CustomerService{
     private final PasswordEncoder passwordEncoder;
 
 
-//    public Customer save(User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        return client.save(user);
-//    }
+    public Customer save(Customer customer) {
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        return client.save(customer);
+    }
 
-    public CustomerDto findByUsername(String username) {
+    public Customer findByUsername(String username) {
         return client.getCustomerByLogin(username);
     }
 

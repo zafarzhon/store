@@ -3,6 +3,7 @@ package com.primestore.il_service.controller;
 import com.primestore.il_service.dto.AuthRequestDto;
 import com.primestore.il_service.dto.AuthResponseDto;
 import com.primestore.il_service.service.AuthService;
+import com.primestore.il_service.service.CustomerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
+    private final CustomerService customerService;
 
     @PostMapping("/log-in")
-    public String auth(AuthRequestDto authRequestDto, HttpServletResponse response, HttpServletRequest req) {
+    public String auth(AuthRequestDto authRequestDto, HttpServletResponse response) {
         AuthResponseDto auth;
         try {
             auth = authService.auth(authRequestDto);
@@ -31,7 +33,6 @@ public class AuthController {
             System.err.println(e.getMessage());
             return "redirect:/";
         }
-
 
         ResponseCookie cookie = ResponseCookie.from("access_token", auth.getToken()).
                 httpOnly(true).
@@ -41,8 +42,6 @@ public class AuthController {
                 sameSite("Strict").
                 build();
         response.addHeader("Set-Cookie", cookie.toString());
-
-        System.out.println();
         return "redirect:/";
     }
 
@@ -59,8 +58,16 @@ public class AuthController {
         return "redirect:/";
     }
 
-    @PostMapping("/sign-up")
-    public String signup(AuthRequestDto authRequestDto, HttpServletResponse response, HttpServletRequest req) {
-        return "fast";
-    }
+//    @PostMapping("/sign-up")
+//    public String signup(@RequestBody Customer customer) {
+//        customerService.save(customer);
+//        AuthResponseDto auth;
+//        try {
+//            auth = authService.auth(customer);
+//        } catch (RuntimeException e) {
+//            System.err.println(e.getMessage());
+//            return "redirect:/error";
+//        }
+//        return "redirect:/";
+//    }
 }

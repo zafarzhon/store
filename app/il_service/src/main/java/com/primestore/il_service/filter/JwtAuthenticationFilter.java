@@ -35,7 +35,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     findFirst().
                     ifPresent(cookie -> {
                         String token = cookie.getValue();
-                        System.out.println();
                         if (tokenService.isValidToken(token)) {
                             Authentication auth = tokenService.parseToken(token);
                             SecurityContextHolder.getContext().setAuthentication(auth);

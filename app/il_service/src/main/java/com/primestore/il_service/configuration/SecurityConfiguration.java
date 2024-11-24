@@ -29,7 +29,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
         return http.
-//                cors(AbstractHttpConfigurer::).
+                cors(AbstractHttpConfigurer::disable).
                 csrf(AbstractHttpConfigurer::disable).
                 sessionManagement(AbstractHttpConfigurer::disable).
                 authorizeHttpRequests(cust -> {

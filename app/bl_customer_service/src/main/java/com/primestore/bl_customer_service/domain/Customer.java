@@ -1,16 +1,14 @@
 package com.primestore.bl_customer_service.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,18 +26,21 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @Min(value = 5)
-    @Max(value = 20)
+    @Size(min = 5, max = 20)
     @NotBlank
-    @NotEmpty
     @Column(unique = true, nullable = false)
     private String login;
     private String password;
-    @Column(name = "orders_id")
-    private String ordersIdString;
-    @Transient
-    private List<Integer> ordersId;
-    @CreatedDate
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Order> orders = new ArrayList<>();
+    //    private Integer balance = 10000;
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    public void addOrder(Order order) {
+        orders.add(order);
+        order.setCustomer(this);
+    }
 }

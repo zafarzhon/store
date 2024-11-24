@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author zafarzhon
@@ -29,16 +28,16 @@ public class Order {
     private List<Integer> productsQuantity;
     @Transient
     private List<Integer> productsPrice;
-    @Column(name = "customer_id",nullable = false)
+    @Column(name = "customer_id", nullable = false)
     private Integer customerId;
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "products_id", nullable = false)
     private String productsIdString;
-    @Column(name = "products_quantity",nullable = false)
+    @Column(name = "products_quantity", nullable = false)
     private String productsQuantityString;
-    @Column(name = "products_price",nullable = false)
+    @Column(name = "products_price", nullable = false)
     private String productsPriceString;
     @Enumerated(EnumType.STRING)
     private Status status;

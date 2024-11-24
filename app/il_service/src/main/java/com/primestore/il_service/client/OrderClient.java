@@ -1,5 +1,6 @@
 package com.primestore.il_service.client;
 
+import com.primestore.il_service.dto.Customer;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface OrderClient {
 
     @PostMapping("/make")
-//    @Headers(value = "Content-Type: application/json")
-    ResponseEntity<String> makeOrder(@RequestParam(name = "login") String login,
-                                     @RequestParam(name = "cartJson") String cartJson);
+    ResponseEntity<Customer> makeOrder(@RequestParam(name = "login") String login,
+                                       @RequestParam(name = "cartJson") String cartJson);
 }

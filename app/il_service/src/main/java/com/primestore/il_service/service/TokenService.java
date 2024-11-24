@@ -1,6 +1,5 @@
 package com.primestore.il_service.service;
 
-import com.primestore.il_service.dto.CustomerDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -29,12 +28,10 @@ public class TokenService {
 
     public String createToken(UserDetails userDetails) {
         String username = userDetails.getUsername();
-        Integer id = ((CustomerDto) userDetails).getId();
         System.out.println();
         return Jwts.builder().
-                claim("id",id).
                 claim("username", username).
-                claim("role", "ROLE_ADMIN").
+                claim("role", "ROLE_CUSTOMER").
                 signWith(secretKey, SignatureAlgorithm.HS256).
                 compact();
     }

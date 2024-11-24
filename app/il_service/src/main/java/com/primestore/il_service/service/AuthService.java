@@ -2,6 +2,7 @@ package com.primestore.il_service.service;
 
 import com.primestore.il_service.dto.AuthRequestDto;
 import com.primestore.il_service.dto.AuthResponseDto;
+import com.primestore.il_service.dto.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,7 +20,16 @@ public class AuthService {
     private final TokenService tokenService;
 
     public AuthResponseDto auth(AuthRequestDto authRequestDto) {
-        UserDetails userDetails = customerService.userDetailsService().loadUserByUsername(authRequestDto.getLogin());
+        UserDetails userDetails = null;
+        try {
+            userDetails = customerService.userDetailsService().loadUserByUsername(authRequestDto.getLogin());
+        } catch (RuntimeException e) {
+            Customer customer = new Customer();
+            customer.setLogin(authRequestDto.getLogin());
+            customer.setPassword(authRequestDto.getPassword());
+            userDetails = customerService.save(customer);
+        }
+
         if (!passwordEncoder.matches(authRequestDto.getPassword(), userDetails.getPassword())) {
             throw new RuntimeException("Invalid password");
         }
